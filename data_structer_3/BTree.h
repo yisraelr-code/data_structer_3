@@ -477,6 +477,12 @@ T* BTree<T>::search(BNode<T>* p, T x)
 template <typename T>
 void BTree<T>::printAllKeys(BNode<T>* p, std::function<bool(const T&)> predicate)
 {
+	if (p->Son == NULL)
+		return;
+	for (int i = 0; i < p->nkeys; i++) 
+	{
+		printAllKeys(p->Son[i],)
+	}
 }
 
 template <typename T>
