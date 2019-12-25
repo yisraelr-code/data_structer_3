@@ -1,3 +1,11 @@
+/*
+The goal of this program : B TREE
+name of corse : Data data_structure
+targil 3
+AUTHORS:		Salay Shalom Shuker ,Yisrael Rolnick
+ID:				311600605 , 206672057
+*/
+#pragma once
 #include <iostream>
 #include <string>
 #include <list>
@@ -34,6 +42,7 @@ struct BNode
 		int tmp = (int)(M / 2.0 + 0.5);
 		return nsons <= tmp;
 	}
+
 
 private:
 	void AddValue(T x, BNode<T>* p, T& upx, BNode<T>*& upt);
@@ -449,15 +458,19 @@ public:
 	void deleteTree() { deleteSubTree(root); }
 	void printSubTree(BNode<T>* t);
 	void printTree() { printSubTree(root); }
+	void printSubFromMinToMax(T min, T max, BNode<T>* t);
 	void printAllKeys(std::function<bool(const T&)> predicate) { printAllKeys(root, predicate); }
 	void printAllKeys(BNode<T>* p, std::function<bool(const T&)>);
 	void printBetween(T min, T max);
 	T* search(T x) { return search(root, x); }
 	T* search(BNode<T>* p, T x);
+
+
 };
 template <typename T>
-void BTree<T>::printBetween(T min, T max)
+void BTree<T>::printBetween(T min, T max) // min -print all keys that big from "min" and small/equal to the max.
 {
+	printSubFromMinToMax(min, max, root);
 
 }
 
@@ -474,25 +487,62 @@ T* BTree<T>::search(BNode<T>* p, T x)
 	return NULL;
 }
 
-template <typename T>
-void BTree<T>::printAllKeys(BNode<T>* p, std::function<bool(const T&)> predicate)
-{
-	if (p->Son == NULL)
-		return;
-	for (int i = 0; i < p->nkeys; i++) 
-	{
-		printAllKeys(p->Son[i],)
-	}
-}
+//template <typename T>
+//void BTree<T>::printAllKeys(BNode<T>* p, std::function<bool(const T&)> predicate)
+//{
+//	if (p == NULL) // this is empty
+//		return;
+//	for (int i = 0; i < p->nkeys; i++) 
+//	{
+//		search(BNode<T> * p, T x);
+//		printAllKeys(p->Son[i], );
+//	}
+//}
+//
+//void BTree<T>::printAllKeys(BNode<T>* p, std::function<bool(const T&)> predicate)
+//{
+//	if (p == NULL) return; //empty
+//	int i;
+//	for (i = 0; i < p->nsons - 1; i++)
+//	{
+//		if (predicate(p->Key[i]) == true)
+//			cout << p->Key[i];
+//		if (i < p->nsons - 1)
+//			printAllKeys(p->Son[i], predicate);
+//
+//	}
+//}
+
+
 
 template <typename T>
 void BTree<T>::deleteSubTree(BNode<T>* t)
 {
+	if (!t) // if the sub tree is null
+	{return;}
+	int i;
+	for (i = 0; i < t->nsons; i++)
+	{deleteSubTree(t->Son[i]);}
+
+	delete t;
 }
 
 template <typename T>
 void BTree<T>::printSubTree(BNode<T>* t)
 {
+	if (!t)// if the sub tree is null
+		return;
+	for (int i = 0; i < t->nsons; i++)  // run on all sons
+	{
+		if (i == t->nsons - 1)
+			printSubTree(t->Son[i]);
+		else            //print the key and go to son
+		{
+			printSubTree(t->Son[i]);
+			cout << t->Key[i];
+			cout<< ' ';
+		}
+	}
 }
 
 template <typename T>
@@ -531,4 +581,38 @@ void BTree<T>::deleteVal(T x)
 			delete tmp;
 		}
 	//otherwise, the root is allowed to have less than M/2 nodes.
+}
+
+
+template <typename T>
+void BTree<T>::printSubFromMinToMax(T min, T max, BNode<T>* tree)      //print number who chooesd
+{
+	vector<T> vect;
+	InsertToVect(vect, tree);
+	for (int i = 0; i < vect.size(); i++)
+	{
+		if (vect[i] <= max && vect[i] >= min)
+		{
+			cout << vect[i] << ' ' << endl;
+		}
+	}
+
+}
+
+
+template <typename T>
+void InsertToVect(vector<T>& vect, BNode<T>* t)      //insert the tree to vector
+{
+	if (!t)
+		return;
+	for (int i = 0; i < t->nsons; i++)         // go on the sons
+	{
+		if (i == t->nsons - 1)
+			InsertToVect(vect, t->Son[i]);
+		else
+		{
+			InsertToVect(vect, t->Son[i]);
+			vect.push_back(t->Key[i]);
+		}
+	}
 }
