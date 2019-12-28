@@ -1,3 +1,10 @@
+/*
+The goal of this program : B TREE
+name of corse : Data data_structure
+targil 3
+AUTHORS:		Salay Shalom Shuker ,Yisrael Rolnick
+ID:				311600605 , 206672057
+*/
 #include <iostream>
 #include <string>
 #include <list>
@@ -8,7 +15,7 @@
 
 using namespace std;
 
-void main()
+int main()
 {
 	char ch;
 	BTree<Lending> bt;
@@ -59,4 +66,5 @@ void main()
 		}//switch
 	} while (ch != '5');
 
-}//
+	return 0;
+}

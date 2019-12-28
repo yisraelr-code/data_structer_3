@@ -1,3 +1,11 @@
+/*
+The goal of this program : B TREE
+name of corse : Data data_structure
+targil 3
+AUTHORS:		Salay Shalom Shuker ,Yisrael Rolnick
+ID:				311600605 , 206672057
+*/
+#pragma once
 #include<iostream>
 using namespace std;
 class Lending
@@ -32,6 +40,10 @@ public:
 		return os;
 	}
 };
+inline void Lending::set_date(string s)
+{
+	this->date = s;
+} //
 bool Lending::operator==(Lending a)const
 {
 	return id == a.id && name == a.name && date == a.date && itemCode == a.itemCode;
