@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lending.h">
+    <ClInclude Include="BTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BTree.h">
+    <ClInclude Include="lending.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="main .cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
