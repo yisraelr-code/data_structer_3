@@ -13,19 +13,21 @@ ID:				311600605 , 206672057
 #include "BTree.h"
 #include "lending.h"
 
+
 using namespace std;
 
+//=============================================================
 int main()
 {
+
 	char ch;
-	BTree<Lending> bt;
+	BTree<lending> bt;
 	vector<string> ids;
-	Lending l1, l2;
-	int id, itemCode;
-	string str, str1, str2, name, date;
-	vector<Lending> keys;
-	Lending* p;
-	
+	lending l1, l2;
+	int id;
+	string str, str1, str2;
+	vector<lending> keys;
+	lending* p;
 
 	cout << "\nChoose one of the following" << endl;
 	cout << "1: add a new lending" << endl;
@@ -41,13 +43,13 @@ int main()
 		{
 		case '1':
 			cout << "Enter lending data\n";
-			//cin >> l1;
+			cin >> l1;
 			bt.insert(l1);
 			break;
 
 		case '2':
 			cout << "Enter lending data\n";
-			//cin >> l1;
+			cin >> l1;
 			bt.deleteVal(l1);
 			break;
 		case '3':
@@ -65,6 +67,5 @@ int main()
 		default: cout << "error ";  break;
 		}//switch
 	} while (ch != '5');
-
 	return 0;
 }
