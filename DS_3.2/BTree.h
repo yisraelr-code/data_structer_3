@@ -451,8 +451,8 @@ public:
 	void printSubTree(BNode<T>* t);
 	void printTree() { printSubTree(root); }
 	void printSubFromMinToMax(T min, T max, BNode<T>* t);
-	void printAllKeys(std::function<bool(const T&)> predicate) { printAllKeys(root, predicate); }
-	void printAllKeys(BNode<T>* p, std::function<bool(const T&)>);
+	//void printAllKeys(std::function<bool(const T&)> predicate) { printAllKeys(root, predicate); }
+	//void printAllKeys(BNode<T>* p, std::function<bool(const T&)>);
 	void printBetween(T min, T max);
 	T* search(T x) { return search(root, x); }
 	T* search(BNode<T>* p, T x);

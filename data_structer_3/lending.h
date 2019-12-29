@@ -25,9 +25,9 @@ public:
 	bool operator>(Lending a);
 	bool operator<=(Lending a);
 	bool operator>=(Lending a);
-	int getYear() { return atoi(date.substr(0, 4).c_str()); }
+	/*int getYear() { return atoi(date.substr(0, 4).c_str()); }
 	int getMonth() { return atoi(date.substr(6, 2).c_str()); }
-	int getDay() { return atoi(date.substr(9, 2).c_str()); }
+	int getDay() { return atoi(date.substr(9, 2).c_str()); }*/
 	friend istream& operator>>(istream& is, Lending& l)
 	{
 		cout << "enter: id, name, date, item ";
@@ -52,15 +52,11 @@ bool Lending::operator<(Lending a)
 {
 	if (operator==(a))
 		return false;
-	else if (getYear() < getYear())
-		return true;
-	else if (getMonth() < getMonth() && getYear() == getYear())
-		return true;
-	else if (getDay() < getDay() && getMonth() == getMonth() && getYear() == getYear())
+	else if (date < a.date)
 		return true;
 	else if (date == a.date && itemCode < a.itemCode)
 		return true;
-	else if (id < a.id)
+	else if (date == a.date && itemCode == a.itemCode && id < a.id)
 		return true;
 	else return false;
 }

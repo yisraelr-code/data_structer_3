@@ -11,7 +11,7 @@ ID:				311600605 , 206672057
 #include <vector>
 #include <functional>
 #include "BTree.h"
-#include "Lending.h"
+#include "lending.h"
 
 using namespace std;
 
